@@ -1,0 +1,5 @@
+# 资料语义与接口边界
+
+score.py定义得分为非零整数权重与int64属性的精确整数点积，按得分升序，row_id的UTF-8升序只打破物理次序；缺任一属性或null的行不参与。任意符号权重都支持，整数累加不溢出。indexio.py的Table有固定rows_digest和按row_id的get接口；每属性索引绑定同一表digest、属性及asc/desc，省略null/缺席属性，page给有序(row_id,value)前缀、next、complete与可选remaining_best标量，界限是未读属性值的精确方向界。每行每索引至多一项，缺某属性索引可以全文读取，不得假定不同索引前缀并集覆盖全部候选。查询支持AND整行条件，已见候选也要认证全部属性和条件。OFFSET、K非负，K=0空；WITH TIES扩展OFFSET之后第K条的全部得分peer，不补回OFFSET排除行。阈值需覆盖所有未见候选，已见但未补全候选也必须处理或有安全界。索引页、正文与评分规则都绑定版本，空中间页不等于完成；内存/磁盘预算分别配置，超大peer可分批交付。
+
+score.py提供单行精确评分；indexio.py提供独立属性有序页和正文回查。目前没有组合TopK、候选协调或阈值停止执行器。

@@ -1,0 +1,42 @@
+{
+  "rows": [
+    {
+      "row_id": "a",
+      "raw": 1,
+      "freight": 100,
+      "stock": 3
+    },
+    {
+      "row_id": "b",
+      "raw": 100,
+      "freight": 1,
+      "stock": 2
+    },
+    {
+      "row_id": "c",
+      "raw": 40,
+      "freight": 40,
+      "stock": 2
+    },
+    {
+      "row_id": "d",
+      "raw": 40,
+      "freight": 40,
+      "stock": 2
+    },
+    {
+      "row_id": "e",
+      "raw": null,
+      "freight": 0,
+      "stock": 0
+    }
+  ],
+  "weights": {
+    "raw": 1,
+    "freight": 1,
+    "stock": -1
+  },
+  "offset": 0,
+  "k": 1,
+  "with_ties": true
+}
